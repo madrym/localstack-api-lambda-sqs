@@ -1,24 +1,13 @@
 {
   "app": "go mod download && go run localstack-api-lambda-sqs.go",
   "watch": {
-    "include": [
-      "**"
-    ],
-    "exclude": [
-      "README.md",
-      "cdk*.json",
-      "go.mod",
-      "go.sum",
-      "**/*test.go"
-    ]
+    "include": ["**"],
+    "exclude": ["README.md", "cdk*.json", "go.mod", "go.sum", "**/*test.go"]
   },
   "context": {
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
-    "@aws-cdk/core:target-partitions": [
-      "aws",
-      "aws-cn"
-    ],
+    "@aws-cdk/core:target-partitions": ["aws", "aws-cn"],
     "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
     "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
     "@aws-cdk/aws-ecs:arnFormatIncludesClusterName": true,
@@ -61,6 +50,12 @@
     "@aws-cdk/aws-codepipeline:defaultPipelineTypeToV2": true,
     "@aws-cdk/aws-kms:reduceCrossAccountRegionPolicyScope": true,
     "@aws-cdk/aws-eks:nodegroupNameAttribute": true,
-    "@aws-cdk/aws-ec2:ebsDefaultGp3Volume": true
+    "@aws-cdk/aws-ec2:ebsDefaultGp3Volume": true,
+    "@aws-cdk/core:target-partition": "aws",
+    "@aws-cdk/core:account": "000000000000",
+    "@aws-cdk/core:region": "ap-southeast-2",
+    "localstack": {
+      "endpoint": "http://localhost:4566"
+    }
   }
 }

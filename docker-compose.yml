@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - SERVICES=lambda,apigateway,sqs,secretsmanager,ssm,cloudformation,iam,ecr,events,logs
+      - PERSISTENCE=1
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
